@@ -1,8 +1,89 @@
-.text-overview {
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    
+.scroll-row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+  width: 900px; /* largura fixa para 5 cards */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.card-template {
+  flex: 0 0 180px; /* largura fixa maior para cards */
+  scroll-snap-align: start;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-template:hover {
+  transform: scale(1.05);
+}
+
+.card-title {
+  white-space: normal;
+  text-align: center;
+  writing-mode: horizontal-tb;
+  transform: none;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Botões de navegação */
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 35px;
+  height: 60px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px;
+  user-select: none;
+}
+
+#scroll-left {
+  left: 5px;
+}
+
+#scroll-right {
+  right: 5px;
+}
+
+.scroll-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-row::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.scroll-row::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+.card-template {
+  flex: 0 0 180px; /* largura fixa maior para cards */
+  scroll-snap-align: start;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card-template:hover {
+  transform: scale(1.05);
 }
