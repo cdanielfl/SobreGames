@@ -15,6 +15,18 @@ section, .container {
 .navbar {
   background-color: #000000 !important;
   color: #ffffff;
+  font-weight: bold;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #00adee !important;
 }
 
 .navbar .nav-link,
@@ -25,6 +37,23 @@ section, .container {
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
   color: #00adee !important;
+}
+
+/* Dropdown menu categorias */
+.dropdown-menu {
+  background-color: #000000 !important;
+  border: none;
+}
+
+.dropdown-menu .dropdown-item {
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+  background-color: #00adee !important;
+  color: #000000 !important;
 }
 
 .navbar-brand#logo-container {
