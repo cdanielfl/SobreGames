@@ -78,6 +78,13 @@ section, .container {
   position: relative;
 }
 
+#search-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
 .card-template {
   flex: 0 0 180px;
   scroll-snap-align: start;
@@ -87,6 +94,19 @@ section, .container {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0,174,239,0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 320px; /* Ajuste para altura fixa */
+}
+.card-body {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.card-body a.btn {
+  margin-top: auto;
 }
 
 .card-template:hover {
@@ -109,6 +129,11 @@ section, .container {
   font-size: 0.95rem;
   margin: 0 0 5px 0;
   color: #00adee;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2px 4px;
+  border-radius: 3px;
+  display: inline-block;
 }
 
 .card-text {
@@ -149,6 +174,154 @@ section, .container {
 
 #scroll-right {
   right: 5px;
+}
+
+/* Botões de navegação para Jogos Recentes */
+#scroll-left-recent {
+  left: 5px;
+  background-color: rgba(0,174,239,0.8);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 35px;
+  height: 60px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px;
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#scroll-right-recent {
+  right: 5px;
+  background-color: rgba(0,174,239,0.8);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 35px;
+  height: 60px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px;
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Botões de navegação para Jogos Bem Avaliados */
+#scroll-left-rated {
+  left: 5px;
+  background-color: rgba(0,174,239,0.8);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 35px;
+  height: 60px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px;
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#scroll-right-rated {
+  right: 5px;
+  background-color: rgba(0,174,239,0.8);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 35px;
+  height: 60px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px;
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Botões de navegação para Próximos Lançamentos */
+#scroll-left-upcoming {
+  left: 5px;
+  background-color: rgba(0,174,239,0.8);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 35px;
+  height: 60px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px;
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#scroll-right-upcoming {
+  right: 5px;
+  background-color: rgba(0,174,239,0.8);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 35px;
+  height: 60px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px;
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Botões de navegação para Jogos Gratuitos */
+#scroll-left-free {
+  left: 5px;
+  background-color: rgba(0,174,239,0.8);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 35px;
+  height: 60px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px;
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#scroll-right-free {
+  right: 5px;
+  background-color: rgba(0,174,239,0.8);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 35px;
+  height: 60px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px;
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Ajuste para títulos h2 das categorias para a cor azul do Mais Jogados */
+section#JogosRecentes h2,
+section#JogosBemAvaliados h2,
+section#ProximosLancamentos h2,
+section#JogosGratuitos h2 {
+  color: #00adee !important;
 }
 
 .scroll-row::-webkit-scrollbar {
