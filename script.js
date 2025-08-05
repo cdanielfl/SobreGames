@@ -26,7 +26,7 @@ function createCard(game) {
       <p class="card-text">${game.released ? `Lançamento: ${game.released}` : 'Data desconhecida'}</p>
       <p class="card-text"><strong>Gêneros:</strong> ${genres}</p>
       <p class="card-text"><strong>Avaliação:</strong> ${rating} (${ratingsCount} avaliações)</p>
-      <a href="${game.website || '#'}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Veja Mais</a>
+      <button class="btn btn-primary" onclick="openGamePage('${game.id}')">Ver Detalhes</button>
     </div>
   `;
   return card;
@@ -185,6 +185,10 @@ async function loadFreeGames() {
   games.forEach(game => {
     container.appendChild(createCard(game));
   });
+}
+
+function openGamePage(gameId) {
+  window.location.href = `gamepage/gamepage.html?id=${gameId}`;
 }
 
 window.onload = () => {

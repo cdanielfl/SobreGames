@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Jogo</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="gamepage.css">
+</head>
+<body>
+    <div class="gamepage-container">
+        <button class="back-btn" onclick="history.back()">← Voltar</button>
+        
+        <div class="game-header">
+            <img id="game-cover" class="game-cover" alt="Capa do jogo">
+            <div class="game-info">
+                <h1 id="game-title"></h1>
+                <p id="game-developer"></p>
+                <p id="game-release"></p>
+                <div id="game-platforms" class="platforms"></div>
+            </div>
+        </div>
+
+        <div class="game-details">
+            <h2>Sobre o jogo</h2>
+            <p id="game-description"></p>
+            
+            <h3>Gênero</h3>
+            <p id="game-genre"></p>
+            
+            <h3>Plataformas</h3>
+            <div id="game-platforms-list"></div>
+            
+            <h3>Nota</h3>
+            <div class="rating">
+                <span id="game-rating"></span>/5 ⭐
+            </div>
+        </div>
+
+        <section id="related-games" class="related-games-section">
+            <h2>Jogos da mesma categoria</h2>
+            <div id="related-games-container" class="related-games-container">
+                <!-- Jogos relacionados serão carregados aqui -->
+            </div>
+        </section>
+    </div>
+
+    <script src="gamepage.js"></script>
+</body>
+</html>
