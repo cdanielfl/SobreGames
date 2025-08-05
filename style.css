@@ -1,3 +1,40 @@
+html, body, #root {
+  height: 100%;
+  background-color: #000000 !important;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+section, .container {
+  background-color: #000000 !important;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #000000 !important;
+  color: #ffffff;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: #ffffff !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #00adee !important;
+}
+
+.navbar-brand#logo-container {
+  width: 120px;
+  height: 40px;
+  background: url('logo/logo.png') no-repeat center center;
+  background-size: contain;
+}
+
+/* Scroll row */
 .scroll-row {
   display: flex;
   flex-wrap: nowrap;
@@ -6,16 +43,25 @@
   gap: 15px;
   padding-bottom: 10px;
   scroll-snap-type: x mandatory;
-  width: 900px; /* largura fixa para 5 cards */
+  width: 900px;
   margin: 0 auto;
   box-sizing: border-box;
+  position: relative;
 }
 
 .card-template {
-  flex: 0 0 180px; /* largura fixa maior para cards */
+  flex: 0 0 180px;
   scroll-snap-align: start;
   cursor: pointer;
   transition: transform 0.2s;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,174,239,0.5);
+}
+
+.card-template:hover {
+  transform: scale(1.05);
 }
 
 .card-img-top {
@@ -24,19 +70,31 @@
   object-fit: cover;
 }
 
-.card-template:hover {
-  transform: scale(1.05);
+.card-body {
+  padding: 10px;
 }
 
 .card-title {
   white-space: normal;
   text-align: center;
-  writing-mode: horizontal-tb;
-  transform: none;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  font-size: 0.9rem;
-  margin: 0;
+  font-size: 0.95rem;
+  margin: 0 0 5px 0;
+  color: #00adee;
+}
+
+.card-text {
+  font-size: 0.85rem;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background-color: #00adee;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0086b3;
 }
 
 /* Botões de navegação */
@@ -44,7 +102,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,174,239,0.8);
   border: none;
   color: white;
   font-size: 2rem;
@@ -69,21 +127,10 @@
 }
 
 .scroll-row::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #0086b3;
   border-radius: 4px;
 }
 
 .scroll-row::-webkit-scrollbar-track {
-  background: #ddd;
-}
-
-.card-template {
-  flex: 0 0 180px; /* largura fixa maior para cards */
-  scroll-snap-align: start;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.card-template:hover {
-  transform: scale(1.05);
+  background: #333;
 }

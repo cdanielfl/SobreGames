@@ -1,73 +1,71 @@
 const apiKey = '9813456eb32940b0af1acfe404f4e057';
-const url = `https://api.rawg.io/api/games?key=${apiKey}&page_size=20`; // Pegando mais jogos pra preencher a fileira
 
-// Função opcional para traduzir nome
-async function traduzirTexto(texto, targetLang = 'pt') {
-  const encodedText = encodeURIComponent(texto);
-  const endpoint = `https://api.mymemory.translated.net/get?q=${encodedText}&langpair=en|${targetLang}`;
-  const response = await fetch(endpoint);
-  const data = await response.json();
-  return data.responseData?.translatedText || texto;
+function redirectToSearchPage() {
+  const query = document.getElementById('search-input').value.trim();
+  if (query) {
+    window.location.href = `search/search.html?query=${encodeURIComponent(query)}`;
+  }
+  return false;
 }
 
-async function carregarJogos() {
-  const response = await fetch(url);
-  const data = await response.json();
+function createCard(game) {
+  const card = document.createElement('div');
+  card.className = 'card-template';
+  card.innerHTML = `
+    <img src="${game.background_image || ''}" class="card-img-top" alt="${game.name}" />
+    <div class="card-body">
+      <h5 class="card-title">${game.name}</h5>
+      <p class="card-text">${game.released ? `Lançamento: ${game.released}` : 'Data desconhecida'}</p>
+      <a href="${game.website || '#'}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Site Oficial</a>
+    </div>
+  `;
+  return card;
+}
 
-  const modelo = document.querySelector('.card-template');
-  const row = document.getElementById('movie-row');
+async function loadPopularGames() {
+  const url = `https://api.rawg.io/api/games?key=${apiKey}&ordering=-added&page_size=10`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Erro na API');
+  const data = await res.json();
 
-  // Armazenar todos os cards
-  const cards = [];
+  const games = data.results;
+  const container = document.getElementById('popular-row');
+  container.innerHTML = '';
 
-  for (const jogo of data.results) {
-    // Traduz nome (opcional)
-    jogo.name = await traduzirTexto(jogo.name);
-
-    const card = modelo.cloneNode(true);
-    card.classList.remove('d-none', 'card-template');
-
-    card.querySelector('.card-img-top').src = jogo.background_image;
-    card.querySelector('.card-img-top').alt = jogo.name;
-    card.querySelector('.card-title').textContent = jogo.name;
-    card.querySelector('.card-text').textContent = jogo.released ? `Lançamento: ${jogo.released}` : 'Data de lançamento desconhecida';
-    card.querySelector('.btn-primary').href = jogo.website || '#';
-
-    cards.push(card);
-  }
-
-  let startIndex = 0;
-  let endIndex = 5;
-
-  // Função para renderizar cards visíveis
-  function renderCards() {
-    row.innerHTML = '';
-    for (let i = startIndex; i < endIndex && i < cards.length; i++) {
-      row.appendChild(cards[i]);
-    }
-  }
-
-  renderCards();
-
-  // Botões de navegação
-  const btnLeft = document.getElementById('scroll-left');
-  const btnRight = document.getElementById('scroll-right');
-
-  btnLeft.addEventListener('click', () => {
-    if (startIndex > 0) {
-      startIndex = Math.max(0, startIndex - 2);
-      endIndex = startIndex + 5;
-      renderCards();
-    }
-  });
-
-  btnRight.addEventListener('click', () => {
-    if (endIndex < cards.length) {
-      endIndex = Math.min(cards.length, endIndex + 2);
-      startIndex = endIndex - 5;
-      renderCards();
-    }
+  games.forEach(game => {
+    container.appendChild(createCard(game));
   });
 }
 
-carregarJogos();
+async function loadCategories() {
+  const url = `https://api.rawg.io/api/genres?key=${apiKey}`;
+  const res = await fetch(url);
+  if (!res.ok) return;
+  const data = await res.json();
+
+  const list = document.getElementById('category-list');
+  list.innerHTML = '';
+
+  data.results.forEach(genre => {
+    const li = document.createElement('li');
+    li.innerHTML = `<a class="dropdown-item" href="search/search.html?query=${encodeURIComponent(genre.name)}">${genre.name}</a>`;
+    list.appendChild(li);
+  });
+}
+
+// Navegação dos botões scroll (se quiser, posso adicionar, só avisar)
+const btnLeft = document.getElementById('scroll-left');
+const btnRight = document.getElementById('scroll-right');
+const row = document.getElementById('popular-row');
+
+btnLeft.addEventListener('click', () => {
+  row.scrollBy({ left: -400, behavior: 'smooth' });
+});
+btnRight.addEventListener('click', () => {
+  row.scrollBy({ left: 400, behavior: 'smooth' });
+});
+
+window.onload = () => {
+  loadPopularGames();
+  loadCategories();
+};

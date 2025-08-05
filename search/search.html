@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sobre Games</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="logo/logo.css" />
+  <title>Busca - Sobre Games</title>
+  <link rel="stylesheet" href="../style.css" />
+   <link rel="stylesheet" href="logo/logo.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
   <div id="Navbar">
-<nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#" id="logo-container"></a>
+        <a class="navbar-brand" href="../index.html" id="logo-container"></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -28,9 +28,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+              <a class="nav-link" href="../index.html">Inicio</a>
             </li>
-            
+            <li class="nav-item">
+              <a class="nav-link" href="#">Os Mais Jogados</a>
+            </li>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -64,17 +66,14 @@
     </nav>
   </div>
 
-  <section id="MaisJogados" class="container my-4" style="position: relative;">
-    <h2 class="text-center mb-4 text-info">Mais Jogados</h2>
-    <button id="scroll-left" class="scroll-button">&#8249;</button>
-    <div id="popular-row" class="scroll-row">
-      <!-- Cards populados por JS -->
+  <section id="search-section" class="container my-4" style="position: relative;">
+    <h2 class="text-center mb-4 text-info">Resultados da Busca</h2>
+    <div id="search-results" class="scroll-row">
+      <!-- Resultados carregados aqui -->
     </div>
-    <button id="scroll-right" class="scroll-button">&#8250;</button>
   </section>
-
   <script src="logo/logo.js"></script>
-  <script src="script.js"></script>
+  <script src="search.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
